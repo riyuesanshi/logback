@@ -26,7 +26,17 @@ public class IntegerTokenConverter extends DynamicConverter<Object> implements M
     public final static String CONVERTER_KEY = "i";
 
     public String convert(int i) {
-        return Integer.toString(i);
+//      return Integer.toString(i);
+    	StringBuffer sb = new StringBuffer();
+    	if(i == 0) {
+    		return "001";
+    	}else if(i < 10) {
+    		return sb.append("00").append(Integer.toString(i)).toString();
+    	}else if (i > 9 && i < 100) {
+			return sb.append("0").append(Integer.toString(i)).toString();
+		}else {
+			return Integer.toString(i);
+		}
     }
 
     public String convert(Object o) {
